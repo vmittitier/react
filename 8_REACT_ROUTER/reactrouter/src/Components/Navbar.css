@@ -1,0 +1,26 @@
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(155, 155, 155);
+}
+
+nav a{
+
+    margin:  0 10px;
+    padding: 5px;
+    text-decoration: none;
+    color: rgb(36, 38, 41);
+    font-weight: bold;
+    
+}
+
+nav a:hover {
+color: azure;
+
+}
+
+.active{
+background-color: rgb(108, 61, 129);
+color: rgb(223, 213, 224);
+border-radius: 10%;
+}
