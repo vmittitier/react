@@ -1,13 +1,14 @@
-
-import './App.css';
-
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 
-import { HookUseContext } from './components/HookUseContext';
+import './App.css';
 
 // Pages
 import Home from './pages/Home';
 import About from './pages/About';
+
+import { HookUseContext } from './components/HookUseContext';
+import HookUseMemo from './components/HookUseMemo';
+
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         </Routes>
       </BrowserRouter>
      </HookUseContext>
+     <HookUseMemo />
     </div>
   );
 }
