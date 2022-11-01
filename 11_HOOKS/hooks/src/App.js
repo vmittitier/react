@@ -7,7 +7,6 @@ import Home from './pages/Home';
 import About from './pages/About';
 
 import { HookUseContext } from './components/HookUseContext';
-import HookUseMemo from './components/HookUseMemo';
 
 
 function App() {
@@ -30,7 +29,6 @@ function App() {
         </Routes>
       </BrowserRouter>
      </HookUseContext>
-     <HookUseMemo />
     </div>
   );
 }
