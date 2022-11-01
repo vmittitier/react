@@ -10,7 +10,7 @@ export const HookUseContext = ({children}) => {
 
     return (
         <SomeContext.Provider value={{contextValue}}>
-            {children}
+            {children }
         </SomeContext.Provider>
     )
 
