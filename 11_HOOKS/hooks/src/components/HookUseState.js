@@ -1,44 +1,50 @@
-import React from 'react'
-import { useState } from 'react'
+import { useState } from "react";
 
 const HookUseState = () => {
-    
-    // 1 - useState
-    let userName = "Joao";
-    const [name, setName] = useState("Matheus")
+  // 1 - useState
+  let userName = "João";
 
-    const changeNames = () => {
-        userName = "joao souza"
-        setName("Vini Mittitier")
-    }
+  const [name, setName] = useState("Vini");
 
-    // 2 - usestate e input
-    const [age, setAge] = useState(18)
-    
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        
-        // envio a uma API
-        console.log(age)
-    }
-    
+  const changeNames = () => {
+    userName = "João Souza";
+
+    setName("Vini Mittitier");
+
+    console.log(userName);
+    console.log(name);
+  };
+
+  // 2 - useState e input
+  const [age, setAge] = useState(18);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(age);
+  };
+
   return (
     <div>
-        {/* 1 - useState */}
-        <h2>useState:</h2>
-        <p>Variavel: {userName}</p>
-        <p>useState: {name}</p>
-        <button onClick={changeNames}>Mudar nome com hook!</button>
-        <hr />
-        {/* 2 - useState e input */}
-        <p>Digite sua idade:</p>
-        <form onSubmit={handleSubmit}>
-            <input type="text" value={age} onChange={(e) => setAge(e.target.value)} />
+      {/* 1 - useState */}
+      <h2>useState</h2>
+      <p>Variável: {userName}</p>
+      <p>useState: {name}</p>
+      <button onClick={changeNames}>Change!</button>
+      {/* 2 - useState e inputs */}
+      <p>Digite sua idade:</p>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={age}
+          onChange={(e) => setAge(e.target.value)}
+        />
         <input type="submit" value="Enviar" />
-        </form>
-        <p>Sua idade e: {age}</p>
+      </form>
+      <p>Você tem {age} anos!</p>
+      <hr />
     </div>
-  )
-}
+  );
+};
 
-export default HookUseState
+export default HookUseState;

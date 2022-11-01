@@ -1,67 +1,71 @@
-
-import { useReducer, useState } from 'react'
+import { useReducer, useState } from "react";
 
 const HookUseReducer = () => {
-    // 1 comecando com useReducer
-    const [number, dispatch] = useReducer((state, action) =>{
-        return Math.random(state)
-    })
+  // 1 - começando com useReducer
+  const [number, dispatch] = useReducer((state, action) => {
+    return Math.random(state);
+  }, 1);
 
-    // 2 avancando com useReducer
-    const initialTasks = [
-        {id: 1, text: "Fazer alguma coisa"},
-        {id: 2, text: "Fazer outra coisa"}
-    ]
+  // 2 - avançando no useReducer
+  const initialTasks = [
+    { id: 1, text: "Fazer alguma coisa" },
+    { id: 2, text: "Fazer outra coisa" },
+  ];
 
-    const taskReducer = (state, action) => {
-        switch (action.type){
-            case "ADD": 
-            const newTask = {
-                id: Math.random(),
-                text: taskText,
-            };
-            setTaskText("");
-            return [...state, newTask];
+  const taskReducer = (state, action) => {
+    switch (action.type) {
+      case "ADD":
+        const newTask = {
+          id: Math.random(),
+          text: taskText,
+        };
 
-            case "DELETE":
-                return state.filter((task) => task.id !== action.id);
+        setTaskText("");
 
-            default:
-                    return state;
-        }
-    };
+        return [...state, newTask];
 
-    const [taskText, setTaskText] = useState("");
-    const [tasks, dispatchTasks] = useReducer(taskReducer, initialTasks)
-    console.log(taskText)
-    const handleSubmit = (e) =>{
-        e.preventDefault()
-        dispatchTasks({type: "ADD"})
+      case "REMOVE":
+        return state.filter((task) => task.id !== action.id);
+      default:
+        return state;
     }
+  };
 
-    const removeTask = (id) => {
-        dispatchTasks({type: "DELETE", id})
-    }
+  const [taskText, setTaskText] = useState("");
+  const [tasks, dispatchTask] = useReducer(taskReducer, initialTasks);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatchTask({ type: "ADD" });
+  };
+
+  const removeTask = (id) => {
+    dispatchTask({ type: "REMOVE", id: id });
+  };
 
   return (
     <div>
-        <hr />
-        <h2>useReducer</h2>
-        <p>Numero: {number}</p>
-        <button onClick={dispatch}>Alterar Numero</button>
-        <h2>Tarefas</h2>
-        <form onSubmit={handleSubmit}>
-            <input type="text" 
-            onChange={(e) => setTaskText(e.target.value)} 
-            value={taskText}/>
-        <input type="submit" value="Enviar"/>
-        </form>
+      <h2>useReducer</h2>
+      <p>Número: {number}</p>
+      <button onClick={dispatch}>Alterar número!</button>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          onChange={(e) => setTaskText(e.target.value)}
+          value={taskText}
+        />
+        <input type="submit" value="Add" />
+      </form>
+      <ul>
         {tasks.map((task) => (
-            <li key={task.id} onDoubleClick={() => removeTask(task.id)}>{task.text}</li>
+          <li key={task.id} onDoubleClick={() => removeTask(task.id)}>
+            {task.text}
+          </li>
         ))}
-        <hr />
+      </ul>
+      <hr />
     </div>
-  )
-}
+  );
+};
 
-export default HookUseReducer
+export default HookUseReducer;
