@@ -9,9 +9,7 @@ router.use("/api/users", require("./UserRoutes"))
 // para nao baguncar o arquivo principal e isolar, deixa as rotas definidas aqui
 // no app.js soh invoca as rotas
 
-// test router
-router.get("/", (req,res) =>{
-    res.send("API Working!")
-})
+router.use("/api/photos", require("./PhotoRoutes"));
 
-module.exports = router
+module.exports = router;
+

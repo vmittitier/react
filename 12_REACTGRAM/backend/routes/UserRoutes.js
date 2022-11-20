@@ -1,20 +1,37 @@
-// invoca o framework de criacao de uma api
 const express = require("express");
-
-// invoca um router como instancia desse express
 const router = express.Router();
 
 // Controller
-const {register, login} = require("../controllers/UserController");
+const {
+  register,
+  getCurrentUser,
+  login,
+  update,
+  getUserById,
+} = require("../controllers/UserController");
 
 // Middlewares
-const validate = require("../middlewares/handleValidation")
-const {userCreateValidation,
-    loginValidation} = require("../middlewares/userValidations")
+const validate = require("../middlewares/handleValidation");
+const {
+  userCreateValidation,
+  loginValidation,
+  userUpdateValidation,
+} = require("../middlewares/userValidations");
+const authGuard = require("../middlewares/authGuard");
+const { imageUpload } = require("../middlewares/imageUpload");
 
 // Routes
 router.post("/register", userCreateValidation(), validate, register);
+router.get("/profile", authGuard, getCurrentUser);
 router.post("/login", loginValidation(), validate, login);
-
+router.put(
+  "/",
+  authGuard,
+  userUpdateValidation(),
+  validate,
+  imageUpload.single("profileImage"),
+  update
+);
+router.get("/:id", getUserById);
 
 module.exports = router;
