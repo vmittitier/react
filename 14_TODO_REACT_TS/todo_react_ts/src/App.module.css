@@ -1,0 +1,30 @@
+.main {
+  min-height: 60vh;
+  text-align: center;
+  padding: 2em;
+  padding-inline: 3rem;
+  margin: 2rem auto;
+}
+
+.main h2 {
+  margin-bottom: 0.8em;
+}
+
+.ul li{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.6rem;
+  background-color: #cb2dad;
+  flex: 1;
+  padding: 2.8rem;
+  border-radius: 0.8rem;
+  text-align: center;
+  justify-content: center;
+}
+
+ul:has(li:hover) li:not(:hover){
+  opacity: .6;
+  scale: 0.98;
+}
+
+ 
